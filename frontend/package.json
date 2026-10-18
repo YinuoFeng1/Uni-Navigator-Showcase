@@ -1,0 +1,40 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.2.2",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "dev:3001": "next dev --webpack -p 3001",
+    "build": "next build --webpack",
+    "start": "next start",
+    "start:3001": "next start -p 3001",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint",
+    "test:participant-no-fallback": "node --test tests/chatFailurePolicy.test.mjs",
+    "test:ui-research": "node --test tests/uiResearchWorkbench.test.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.16.0",
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@next/swc-wasm-nodejs": "16.2.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,39 @@
+.DS_Store
+.env
+backend/.env
+backend/.venv/
+backend/.test-data/
+backend/.pytest_cache/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local Codex and package-manager runtimes
+.cache/
+.home/
+.pnpm-home/
+.tools/
+
+frontend/.env.local
+frontend/.next/
+frontend/.next-public/
+frontend/node_modules/
+frontend/tsconfig.tsbuildinfo
+frontend/next-env.d.ts
+
+# Participant logs and rebuildable retrieval indexes
+data/logs/*
+!data/logs/.gitkeep
+data/vector_store/*
+!data/vector_store/.gitkeep
+
+data/evaluation/results/*.json
+data/evaluation/results/*.csv
+
+# Local research outputs, working documents, and generated evaluation logs
+/output/
+/outputs/
+/tmp/
+/data/evaluation/technical_runs.jsonl
