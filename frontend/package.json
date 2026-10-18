@@ -11,7 +11,6 @@
     "start:3001": "next start -p 3001",
     "typecheck": "tsc --noEmit",
     "lint": "eslint",
-    "test:participant-no-fallback": "node --test tests/chatFailurePolicy.test.mjs",
     "test:ui-research": "node --test tests/uiResearchWorkbench.test.mjs",
     "test": "node --test tests/*.test.mjs"
   },

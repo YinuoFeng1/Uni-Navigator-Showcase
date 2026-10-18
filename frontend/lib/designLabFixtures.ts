@@ -51,4 +51,3 @@ export const designDirections = Object.freeze([
       "A document-led academic direction. It gives policy passages a familiar reading hierarchy while keeping interaction controls restrained.",
   },
 ]);
-

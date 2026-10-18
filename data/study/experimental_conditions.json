@@ -1,0 +1,63 @@
+{
+  "schema_version": "2.0",
+  "manifest_version": "conditions-2026-08-27.1",
+  "manifest_checksum": "sha256:fc315dcec89e16043ebc0e3c6f4cef0a6a79c5e5d939c913e14536771f70a495",
+  "conditions": [
+    {
+      "condition_id": "A_SIMPLE_LINK",
+      "condition_version": "2.0.0",
+      "answer_mode": "live_llm",
+      "citation_visibility": "simple_link",
+      "evidence_panel_available": true,
+      "limitations_visibility": "visible",
+      "uncertainty_visibility": "visible",
+      "escalation_visibility": "visible",
+      "source_interaction_controls": ["open_source", "open_evidence_panel"],
+      "task_order_policy": "researcher_assigned",
+      "active": true,
+      "notes": "Presentation-only condition using the shared frozen live LLM runtime."
+    },
+    {
+      "condition_id": "B_SECTION",
+      "condition_version": "2.0.0",
+      "answer_mode": "live_llm",
+      "citation_visibility": "section_reference",
+      "evidence_panel_available": true,
+      "limitations_visibility": "visible",
+      "uncertainty_visibility": "visible",
+      "escalation_visibility": "visible",
+      "source_interaction_controls": ["open_source", "open_evidence_panel"],
+      "task_order_policy": "researcher_assigned",
+      "active": true,
+      "notes": "Presentation-only condition using the shared frozen live LLM runtime."
+    },
+    {
+      "condition_id": "C_HIGHLIGHT",
+      "condition_version": "2.0.0",
+      "answer_mode": "live_llm",
+      "citation_visibility": "highlighted_passage",
+      "evidence_panel_available": true,
+      "limitations_visibility": "visible",
+      "uncertainty_visibility": "visible",
+      "escalation_visibility": "visible",
+      "source_interaction_controls": ["open_source", "open_evidence_panel", "highlight_passage"],
+      "task_order_policy": "researcher_assigned",
+      "active": true,
+      "notes": "Presentation-only condition using the shared frozen live LLM runtime."
+    },
+    {
+      "condition_id": "D_NEXT_STEP",
+      "condition_version": "2.0.0",
+      "answer_mode": "live_llm",
+      "citation_visibility": "highlighted_passage",
+      "evidence_panel_available": true,
+      "limitations_visibility": "visible",
+      "uncertainty_visibility": "visible",
+      "escalation_visibility": "visible_with_next_step",
+      "source_interaction_controls": ["open_source", "open_evidence_panel", "highlight_passage"],
+      "task_order_policy": "researcher_assigned",
+      "active": true,
+      "notes": "Presentation-only condition using the shared frozen live LLM runtime."
+    }
+  ]
+}

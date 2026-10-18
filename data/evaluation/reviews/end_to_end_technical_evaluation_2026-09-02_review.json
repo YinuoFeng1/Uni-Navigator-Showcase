@@ -1,0 +1,1035 @@
+{
+  "schema_version": "1.0",
+  "review_id": "end-to-end-live-rag-2026-09-02.2-gold-label-review",
+  "reviewed_at": "2026-09-02",
+  "reviewer_role": "primary_researcher",
+  "review_method": "Manual verification against the 12 official policy PDFs",
+  "interpretation_note": "The audit workbook's current source, page, scope and contact-staff columns are the final reviewed labels; blank override columns do not indicate missing review.",
+  "source_audit": {
+    "file_name": "Uni_Navigator_50_Question_Audit.xlsx",
+    "sha256": "25bc6992d39b908288cfac513f4d1b4585ed1db9e594f567d6dcc24d6aff49fd"
+  },
+  "reviewed_dataset": {
+    "path": "data/evaluation/end_to_end_technical_evaluation.json",
+    "version": "end-to-end-live-rag-2026-09-02.2",
+    "sha256": "4e163e4d44741f76909ea69424afe597b0f305bfae3895010cbe5da547197404"
+  },
+  "partitioned_dataset": {
+    "path": "data/evaluation/end_to_end_technical_evaluation.json",
+    "version": "end-to-end-live-rag-2026-09-02.3",
+    "sha256": "9dfda81d32cb147dcc983c4b638167e65e2ca5fd2334783f788caa270bfdb1a5",
+    "partition_version": "stratified-fixed-2026-09-02.1",
+    "partitioned_at": "2026-09-02",
+    "label_changes_after_review": false
+  },
+  "summary": {
+    "question_count": 50,
+    "source_correct_count": 50,
+    "page_correct_count": 43,
+    "page_not_applicable_count": 7,
+    "scope_counts": {
+      "in_scope": 36,
+      "ambiguous": 8,
+      "out_of_scope": 6
+    },
+    "escalation_counts": {
+      "yes": 31,
+      "no": 19
+    }
+  },
+  "decisions": [
+    {
+      "question_id": "exam_standard_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-examinations-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-examinations-procedure",
+          "page_start": 11,
+          "page_end": 12
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "exam_paraphrase_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-examinations-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-examinations-procedure",
+          "page_start": 11,
+          "page_end": 12
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "exam_paraphrase_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-examinations-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-examinations-procedure",
+          "page_start": 11,
+          "page_end": 12
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "exam_paraphrase_03",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-examinations-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-examinations-procedure",
+          "page_start": 11,
+          "page_end": 12
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "exam_high_risk_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-examinations-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-examinations-procedure",
+          "page_start": 11,
+          "page_end": 12
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "exam_high_risk_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-examinations-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-examinations-procedure",
+          "page_start": 11,
+          "page_end": 12
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "exam_ambiguous_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-examinations-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-examinations-procedure",
+          "page_start": 11,
+          "page_end": 12
+        }
+      ],
+      "expected_scope": "ambiguous",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "exam_ambiguous_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-examinations-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-examinations-procedure",
+          "page_start": 11,
+          "page_end": 12
+        }
+      ],
+      "expected_scope": "ambiguous",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "withdrawal_standard_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "source_id": "uq-removal-courses-special-circumstances-procedure",
+          "page_start": 1,
+          "page_end": 1
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "withdrawal_paraphrase_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "source_id": "uq-removal-courses-special-circumstances-procedure",
+          "page_start": 1,
+          "page_end": 1
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "withdrawal_paraphrase_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "source_id": "uq-removal-courses-special-circumstances-procedure",
+          "page_start": 1,
+          "page_end": 1
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "withdrawal_paraphrase_03",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "source_id": "uq-removal-courses-special-circumstances-procedure",
+          "page_start": 1,
+          "page_end": 1
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "withdrawal_high_risk_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "source_id": "uq-removal-courses-special-circumstances-procedure",
+          "page_start": 1,
+          "page_end": 1
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "withdrawal_high_risk_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "source_id": "uq-removal-courses-special-circumstances-procedure",
+          "page_start": 1,
+          "page_end": 1
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "withdrawal_ambiguous_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "source_id": "uq-removal-courses-special-circumstances-procedure",
+          "page_start": 1,
+          "page_end": 1
+        }
+      ],
+      "expected_scope": "ambiguous",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "overload_standard_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 13,
+          "page_end": 13
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "overload_paraphrase_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 13,
+          "page_end": 13
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "overload_paraphrase_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 13,
+          "page_end": 13
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "overload_paraphrase_03",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 13,
+          "page_end": 13
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "overload_paraphrase_04",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 13,
+          "page_end": 13
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "overload_high_risk_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 13,
+          "page_end": 13
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "overload_ambiguous_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-enrolment-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-enrolment-procedure",
+          "page_start": 13,
+          "page_end": 13
+        }
+      ],
+      "expected_scope": "ambiguous",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "progression_standard_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-progression-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-progression-procedure",
+          "page_start": 3,
+          "page_end": 4
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "progression_paraphrase_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-progression-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-progression-procedure",
+          "page_start": 3,
+          "page_end": 4
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "progression_paraphrase_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-progression-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-progression-procedure",
+          "page_start": 3,
+          "page_end": 4
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "progression_paraphrase_03",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-progression-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-progression-procedure",
+          "page_start": 3,
+          "page_end": 4
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "progression_high_risk_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-progression-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-progression-procedure",
+          "page_start": 3,
+          "page_end": 4
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "progression_high_risk_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-progression-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-progression-procedure",
+          "page_start": 3,
+          "page_end": 4
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "progression_ambiguous_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-progression-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-progression-procedure",
+          "page_start": 3,
+          "page_end": 4
+        }
+      ],
+      "expected_scope": "ambiguous",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "refund_standard_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 1,
+          "page_end": 2
+        },
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 5,
+          "page_end": 5
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "refund_paraphrase_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 1,
+          "page_end": 2
+        },
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 5,
+          "page_end": 5
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "refund_paraphrase_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 1,
+          "page_end": 2
+        },
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 5,
+          "page_end": 5
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "refund_paraphrase_03",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 1,
+          "page_end": 2
+        },
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 5,
+          "page_end": 5
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "refund_high_risk_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 1,
+          "page_end": 2
+        },
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 5,
+          "page_end": 5
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "refund_high_risk_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 1,
+          "page_end": 2
+        },
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 5,
+          "page_end": 5
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "refund_ambiguous_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-student-refunds-procedure"
+      ],
+      "acceptable_source_ids": [
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 1,
+          "page_end": 2
+        },
+        {
+          "source_id": "uq-student-refunds-procedure",
+          "page_start": 5,
+          "page_end": 5
+        }
+      ],
+      "expected_scope": "ambiguous",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "appeal_standard_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-administrative-appeals-policy",
+        "uq-academic-administrative-appeals-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-administrative-appeals-policy",
+          "page_start": 1,
+          "page_end": 1
+        },
+        {
+          "source_id": "uq-academic-administrative-appeals-procedure",
+          "page_start": 1,
+          "page_end": 2
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "appeal_paraphrase_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-administrative-appeals-policy",
+        "uq-academic-administrative-appeals-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-administrative-appeals-policy",
+          "page_start": 1,
+          "page_end": 1
+        },
+        {
+          "source_id": "uq-academic-administrative-appeals-procedure",
+          "page_start": 1,
+          "page_end": 2
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "appeal_paraphrase_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-administrative-appeals-policy",
+        "uq-academic-administrative-appeals-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-administrative-appeals-policy",
+          "page_start": 1,
+          "page_end": 1
+        },
+        {
+          "source_id": "uq-academic-administrative-appeals-procedure",
+          "page_start": 1,
+          "page_end": 2
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "appeal_paraphrase_03",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-administrative-appeals-policy",
+        "uq-academic-administrative-appeals-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-administrative-appeals-policy",
+          "page_start": 1,
+          "page_end": 1
+        },
+        {
+          "source_id": "uq-academic-administrative-appeals-procedure",
+          "page_start": 1,
+          "page_end": 2
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": false
+    },
+    {
+      "question_id": "appeal_high_risk_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-administrative-appeals-policy",
+        "uq-academic-administrative-appeals-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-administrative-appeals-policy",
+          "page_start": 1,
+          "page_end": 1
+        },
+        {
+          "source_id": "uq-academic-administrative-appeals-procedure",
+          "page_start": 1,
+          "page_end": 2
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "appeal_high_risk_02",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-administrative-appeals-policy",
+        "uq-academic-administrative-appeals-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-administrative-appeals-policy",
+          "page_start": 1,
+          "page_end": 1
+        },
+        {
+          "source_id": "uq-academic-administrative-appeals-procedure",
+          "page_start": 1,
+          "page_end": 2
+        }
+      ],
+      "expected_scope": "in_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "appeal_ambiguous_01",
+      "source_review": "correct",
+      "page_review": "correct",
+      "expected_source_ids": [
+        "uq-academic-administrative-appeals-policy",
+        "uq-academic-administrative-appeals-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [
+        {
+          "source_id": "uq-academic-administrative-appeals-policy",
+          "page_start": 1,
+          "page_end": 1
+        },
+        {
+          "source_id": "uq-academic-administrative-appeals-procedure",
+          "page_start": 1,
+          "page_end": 2
+        }
+      ],
+      "expected_scope": "ambiguous",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "room_out_01",
+      "source_review": "correct",
+      "page_review": "not_applicable",
+      "expected_source_ids": [],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [],
+      "expected_scope": "out_of_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "room_out_02",
+      "source_review": "correct",
+      "page_review": "not_applicable",
+      "expected_source_ids": [],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [],
+      "expected_scope": "out_of_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "room_out_03",
+      "source_review": "correct",
+      "page_review": "not_applicable",
+      "expected_source_ids": [],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [],
+      "expected_scope": "out_of_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "room_out_04",
+      "source_review": "correct",
+      "page_review": "not_applicable",
+      "expected_source_ids": [],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [],
+      "expected_scope": "out_of_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "room_out_05",
+      "source_review": "correct",
+      "page_review": "not_applicable",
+      "expected_source_ids": [],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [],
+      "expected_scope": "out_of_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "room_out_06",
+      "source_review": "correct",
+      "page_review": "not_applicable",
+      "expected_source_ids": [],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [],
+      "expected_scope": "out_of_scope",
+      "expected_escalation": true
+    },
+    {
+      "question_id": "room_ambiguous_01",
+      "source_review": "correct",
+      "page_review": "not_applicable",
+      "expected_source_ids": [
+        "uq-assessment-procedure"
+      ],
+      "acceptable_source_ids": [],
+      "expected_page_ranges": [],
+      "expected_scope": "ambiguous",
+      "expected_escalation": true
+    }
+  ]
+}

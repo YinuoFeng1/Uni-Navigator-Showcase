@@ -1,9 +1,3 @@
-export type StudyCondition =
-  | "A_SIMPLE_LINK"
-  | "B_SECTION"
-  | "C_HIGHLIGHT"
-  | "D_NEXT_STEP";
-
 export type Citation = {
   id: string;
   citationId?: string;
@@ -42,6 +36,8 @@ export type AssistantAnswer = {
   uncertainty?: string;
   uncertaintyLevel: "low" | "medium" | "high";
   escalationRecommended: boolean;
+  escalationCategory: string;
+  escalationReasons: string[];
   highStakesDetected?: boolean;
   citations: Citation[];
   retrievalStatus?: string;
@@ -68,6 +64,8 @@ export type ChatMessage = {
 };
 
 export type FeedbackPayload = {
+  requestId?: string;
+  timestamp?: string;
   sessionId?: string;
   participantLabel?: string;
   participantId?: string;
@@ -78,9 +76,8 @@ export type FeedbackPayload = {
   comment?: string;
 };
 
-export type WouldContactStaff = "yes" | "no" | "not_sure";
-
 export type EvidenceUseAction =
+  | "source_opened"
   | "evidence_panel_opened"
   | "citation_clicked"
   | "source_checked"
@@ -90,6 +87,7 @@ export type EvidenceUseAction =
   | "source_marked_confusing";
 
 export type StudyEventType =
+  | "source_opened"
   | "task_started"
   | "question_submitted"
   | "answer_received"
@@ -108,18 +106,6 @@ export type StudyEventType =
   | "passage_viewed"
   | "system_failure";
 
-export type StudyEvent = {
-  sessionId?: string;
-  participantLabel?: string;
-  interactionId?: string;
-  participantId?: string;
-  taskId?: string;
-  condition: StudyCondition;
-  eventType: StudyEventType;
-  timestamp: string;
-  metadata?: Record<string, unknown>;
-};
-
 export type AdminLogItem = {
   id: string;
   sessionId?: string;
@@ -135,6 +121,7 @@ export type AdminLogItem = {
   question: string;
   answerId: string;
   shortAnswer: string;
+  fullAnswer?: string;
   basedOn?: string;
   limitations?: string;
   uncertainty?: string;
@@ -142,16 +129,22 @@ export type AdminLogItem = {
   highStakesDetected?: boolean;
   uncertaintyLevel: "low" | "medium" | "high" | string;
   escalationRecommended: boolean;
+  escalationCategory?: string;
+  escalationReasons?: string[];
   citationCount: number;
   retrievalStatus?: string;
   citationIds: string[];
+  citations?: Array<Record<string, unknown>>;
   sourceIds: string[];
   retrievedChunkIds: string[];
+  retrievalTrace?: Array<Record<string, unknown>>;
   retrievedContextCount?: number;
   escalationGuidancePresent?: boolean;
   sensitiveWarningShown?: boolean;
   createdAt: string;
   timeToFirstAnswerMs?: number;
+  responseTimeMs?: number;
+  errorType?: string;
   embeddingProvider?: string;
   embeddingModel?: string;
   embeddingDimension?: number;
@@ -162,13 +155,34 @@ export type AdminLogItem = {
   retrievalMode?: string;
   scopeDecision?: string;
   scopeRegistryVersion?: string;
+  scopeRegistryFingerprint?: string;
   scopeMatchedTopics?: string[];
   corpusManifestFingerprint?: string;
   aiProvider?: string;
   aiModel?: string;
+  aiModelRequested?: string;
+  providerResponseModel?: string;
+  providerResponseId?: string;
+  inputTokens?: number;
+  outputTokens?: number;
+  totalTokens?: number;
+  tokenUsage?: Record<string, unknown>;
   answerMode?: string;
   taskVersion?: string;
   appVersion?: string;
+  appRevision?: string;
+  executionContext?: string;
+  answerStrategyVersion?: string;
+  releaseId?: string;
+  releaseVersion?: string;
+  conditionId?: string;
+  conditionVersion?: string;
+  taskManifestVersion?: string;
+  runtimeConfigFingerprint?: string;
+  runtimeConfig?: Record<string, unknown>;
+  promptTemplateVersion?: string;
+  generationTemperature?: number;
+  generationMaxTokens?: number;
   finalResponseId?: string;
   finalResponseSubmitted?: boolean;
   finalDecisionLength?: number;
@@ -339,73 +353,15 @@ export type AdminPilotPreflight = {
   checks: AdminPreflightCheck[];
 };
 
-export type StudyTask = {
-  id?: string;
-  taskId: string;
-  title: string;
-  scenario: string;
-  taskType: string;
-  difficulty: "easy" | "medium" | "hard" | string;
-  expectedSafeBehaviour: string;
-  expectedAction?: string;
-  escalationExpected: boolean;
-  active: boolean;
-  notesForResearcher?: string;
-};
-
-export type StudySession = {
-  sessionId: string;
-  participantLabel: string;
-  studyCondition?: StudyCondition | string | null;
-  startedAt: string;
-  completedAt?: string | null;
-  currentTaskId?: string | null;
-  prototypeNoticeAcknowledged?: boolean | null;
-  prototypeNoticeAcknowledgedAt?: string | null;
-  state?: string | null;
-  releaseId?: string | null;
-  releaseVersion?: string | null;
-  conditionVersion?: string | null;
-  taskProgress?: {
-    startedTaskIds?: string[];
-    completedTaskIds?: string[];
-    eventCount?: number;
-  };
-};
-
-export type FinalTaskResponsePayload = {
-  sessionId: string;
-  taskId: string;
-  interactionId?: string;
-  finalDecisionText: string;
-  confidenceRating: number;
-  wouldContactStaff: WouldContactStaff;
-  perceivedAnswerSupported: number;
-  perceivedTaskDifficulty?: number;
-  notes?: string;
-};
-
-export type FinalTaskResponseResult = {
-  responseId: string;
-  sessionId: string;
-  taskId: string;
-  createdAt: string;
-};
-
 export type EvidenceUsePayload = {
   sessionId?: string;
-  participantLabel?: string;
-  taskId?: string;
+  requestId?: string;
+  timestamp?: string;
   interactionId?: string;
   citationId?: string;
   sourceId?: string;
   chunkId?: string;
   evidenceAction: EvidenceUseAction;
-  evidenceRelevanceRating?: number;
-  evidenceSupportRating?: number;
-  userMarkedHelpful?: boolean;
-  userMarkedConfusing?: boolean;
-  notes?: string;
 };
 
 export type EvidenceUseResult = {
@@ -413,33 +369,31 @@ export type EvidenceUseResult = {
   createdAt: string;
 };
 
-export type TrustChecklistSnapshotPayload = {
-  sessionId?: string;
-  participantLabel?: string;
-  taskId?: string;
-  interactionId?: string;
-  answerClear?: boolean;
-  evidenceChecked?: boolean;
-  sourceSupportsAnswer?: boolean;
-  uncertaintyNoticed?: boolean;
-  wouldContactStaffIfNeeded?: boolean;
+export type ChatStudySession = {
+  sessionId: string;
+  participantLabel: string;
+  roundId: string | null;
+  executionContext: string | null;
+  startedAt: string;
+  completedAt: string | null;
+  state: string;
 };
 
-export type TrustChecklistSnapshotResult = {
-  trustSnapshotId: string;
-  createdAt: string;
-};
-
-export type AdminLog = {
-  id: string;
-  participantId: string;
-  condition: StudyCondition;
-  taskId: string;
-  question: string;
-  citationClicked: boolean;
-  evidenceOpened: boolean;
-  preConfidence: number;
-  postConfidence: number;
-  timeTaken: string;
-  feedback: string;
+export type ResearchSessionSummary = {
+  round_id: string;
+  participant_code: string;
+  session_id: string;
+  execution_context: string;
+  started_at: string;
+  completed_at: string;
+  state: string;
+  duration_seconds: number | "";
+  question_count: number;
+  answer_count: number;
+  citation_click_count: number;
+  evidence_open_count: number;
+  source_open_count: number;
+  source_checked_count: number;
+  feedback_count: number;
+  error_count: number;
 };

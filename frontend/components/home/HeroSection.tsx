@@ -20,15 +20,12 @@ export function HeroSection() {
             Uni-Navigator helps students understand administrative policies by giving
             simple answers, showing the evidence, and suggesting when to contact staff.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8">
             <Button asChild size="lg">
               <Link href="/chat">
                 Start a question
                 <ArrowRight size={18} aria-hidden="true" />
               </Link>
-            </Button>
-            <Button asChild size="lg" variant="secondary">
-              <Link href="/study">View study mode</Link>
             </Button>
           </div>
         </div>

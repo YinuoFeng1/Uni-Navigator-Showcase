@@ -33,10 +33,10 @@ export function WorkbenchHeader({
           tone={admin ? "uncertainty" : "accent"}
         />
         <Link
-          href={admin ? "/study" : "/"}
+          href="/"
           className="grid h-10 w-10 place-items-center rounded-[var(--radius-md)] border border-[var(--ui-border-subtle)] text-[var(--ui-text-secondary)] hover:bg-[var(--ui-surface-recessed)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ui-focus-ring)]"
-          aria-label={admin ? "Open study workspace" : "Open help and home"}
-          title={admin ? "Open study workspace" : "Help and home"}
+          aria-label="Open help and home"
+          title="Help and home"
         >
           <CircleHelp size={18} aria-hidden="true" />
         </Link>

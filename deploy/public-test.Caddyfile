@@ -1,0 +1,47 @@
+{
+	admin off
+	auto_https off
+	persist_config off
+}
+
+http://:3101 {
+	bind 127.0.0.1
+	header X-Robots-Tag "noindex, nofollow, noarchive"
+	header Cache-Control "no-store"
+
+	@admin path /admin /admin/* /api/admin /api/admin/* /docs /docs/* /redoc /openapi.json
+	handle @admin {
+		basic_auth bcrypt "Uni-Navigator researcher" {
+			researcher {$RESEARCHER_PASSWORD_HASH}
+		}
+		handle /api/* {
+			reverse_proxy 127.0.0.1:8001 {
+				header_up -Authorization
+			}
+		}
+		@api_docs path /docs /docs/* /redoc /openapi.json
+		handle @api_docs {
+			reverse_proxy 127.0.0.1:8001 {
+				header_up -Authorization
+			}
+		}
+		handle {
+			reverse_proxy 127.0.0.1:3100 {
+				header_up -Authorization
+			}
+		}
+	}
+
+	handle {
+		handle /api/* {
+			reverse_proxy 127.0.0.1:8001 {
+				header_up -Authorization
+			}
+		}
+		handle {
+			reverse_proxy 127.0.0.1:3100 {
+				header_up -Authorization
+			}
+		}
+	}
+}

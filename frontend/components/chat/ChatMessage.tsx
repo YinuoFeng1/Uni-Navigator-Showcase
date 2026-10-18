@@ -1,22 +1,20 @@
 import { AnswerCard } from "@/components/chat/AnswerCard";
-import type { ChatMessage as ChatMessageType, FeedbackPayload, StudyCondition } from "@/lib/types";
+import type { ChatMessage as ChatMessageType, FeedbackPayload } from "@/lib/types";
 
 type ChatMessageProps = {
   message: ChatMessageType;
-  condition: StudyCondition;
   onCitationClick: (citationId: string) => void;
+  onSourceOpen: (citationId: string) => void;
   onEvidenceOpen: (citationId: string) => void;
-  onFeedbackSubmit: (feedback: FeedbackPayload) => void;
-  workbench?: boolean;
+  onFeedbackSubmit: (feedback: FeedbackPayload) => Promise<void>;
 };
 
 export function ChatMessage({
   message,
-  condition,
   onCitationClick,
+  onSourceOpen,
   onEvidenceOpen,
   onFeedbackSubmit,
-  workbench = false,
 }: ChatMessageProps) {
   if (message.role === "user") {
     return (
@@ -36,11 +34,10 @@ export function ChatMessage({
       {message.answer ? (
         <AnswerCard
           answer={message.answer}
-          condition={condition}
           onCitationClick={onCitationClick}
+          onSourceOpen={onSourceOpen}
           onEvidenceOpen={onEvidenceOpen}
           onFeedbackSubmit={onFeedbackSubmit}
-          workbench={workbench}
         />
       ) : (
         <div className="rounded-lg border border-[var(--border-light)] bg-white px-4 py-3 text-sm leading-6">

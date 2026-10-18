@@ -23,7 +23,6 @@ const syntheticCitation: Citation = {
 export function EvidenceInspectorDemo() {
   const [open, setOpen] = useState(false);
   const [checked, setChecked] = useState(false);
-  const [supportRating, setSupportRating] = useState<number>();
 
   return (
     <section className="answer-surface mb-6 grid gap-3 p-4 xl:hidden">
@@ -43,13 +42,12 @@ export function EvidenceInspectorDemo() {
         Open interactive evidence inspector
       </button>
       <EvidencePanel
+        onOpenSource={() => undefined}
         citation={syntheticCitation}
         isOpen={open}
         onClose={() => setOpen(false)}
         onMarkChecked={() => setChecked(true)}
-        onSupportRatingChange={setSupportRating}
         checked={checked}
-        supportRating={supportRating}
         variant="inspector"
         citationPosition={{ current: 1, total: 1 }}
       />

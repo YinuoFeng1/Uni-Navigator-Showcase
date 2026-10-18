@@ -7,4 +7,3 @@ export function resolveUiTheme(value) {
 export function isDesignLabEnabled({ nodeEnv, studyMode }) {
   return nodeEnv === "development" && studyMode === "development";
 }
-

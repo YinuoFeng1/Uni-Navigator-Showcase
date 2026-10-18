@@ -8,18 +8,12 @@ import {
   downloadAdminSessionSummaryCsv,
   downloadAdminTaskSummaryCsv,
 } from "@/lib/api";
-import type { AdminLog } from "@/lib/types";
-
-type ExportButtonProps = {
-  logs?: AdminLog[];
-};
 
 type ExportOption = {
   label: string;
   description: string;
   filename: string;
   download: () => Promise<Blob>;
-  fallback?: () => { blob: Blob; filename: string };
 };
 
 type ExportStatus = {
@@ -33,33 +27,9 @@ const statusClasses: Record<ExportStatus["tone"], string> = {
   danger: "text-[var(--ui-danger)]",
 };
 
-export function ExportButton({ logs }: ExportButtonProps) {
+export function ExportButton() {
   const [pendingFilename, setPendingFilename] = useState<string | null>(null);
   const [status, setStatus] = useState<ExportStatus | null>(null);
-
-  function buildFallbackCsv() {
-    const headers = [
-      "participantId",
-      "condition",
-      "taskId",
-      "question",
-      "citationClicked",
-      "evidenceOpened",
-      "preConfidence",
-      "postConfidence",
-      "timeTaken",
-      "feedback",
-    ];
-    const rows = (logs ?? []).map((log) =>
-      headers
-        .map((header) => {
-          const value = String(log[header as keyof AdminLog] ?? "");
-          return `"${value.replaceAll('"', '""')}"`;
-        })
-        .join(","),
-    );
-    return [headers.join(","), ...rows].join("\n");
-  }
 
   function downloadBlob(blob: Blob, filename: string) {
     const url = URL.createObjectURL(blob);
@@ -76,13 +46,6 @@ export function ExportButton({ logs }: ExportButtonProps) {
       description: "Detailed research data; may include participant-entered free text",
       filename: "uni_navigator_logs.csv",
       download: downloadAdminLogsCsv,
-      fallback:
-        logs === undefined
-          ? undefined
-          : () => ({
-              blob: new Blob([buildFallbackCsv()], { type: "text/csv" }),
-              filename: "uni-navigator-visible-mock-logs.csv",
-            }),
     },
     {
       label: "Export Session Summary CSV",
@@ -110,20 +73,10 @@ export function ExportButton({ logs }: ExportButtonProps) {
       });
     } catch (error) {
       console.warn(`Failed to download ${option.filename}.`, error);
-      if (option.fallback) {
-        const fallback = option.fallback();
-        downloadBlob(fallback.blob, fallback.filename);
-        setStatus({
-          tone: "warning",
-          message:
-            "Backend export was unavailable. Only the currently displayed mock rows were downloaded.",
-        });
-      } else {
-        setStatus({
-          tone: "danger",
-          message: `${option.label} failed. No file was created; check the backend and retry.`,
-        });
-      }
+      setStatus({
+        tone: "danger",
+        message: `${option.label} failed. No file was created; check the backend and retry.`,
+      });
     } finally {
       setPendingFilename(null);
     }

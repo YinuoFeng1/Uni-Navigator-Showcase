@@ -7,9 +7,10 @@ import type { ChatMessage } from "@/lib/types";
 type TranscriptActionsProps = {
   messages: ChatMessage[];
   onClear: () => void;
+  onDownload: () => void;
 };
 
-export function TranscriptActions({ messages, onClear }: TranscriptActionsProps) {
+export function TranscriptActions({ messages, onClear, onDownload }: TranscriptActionsProps) {
   function downloadTranscript() {
     const text = messages
       .map((message) => `${message.role.toUpperCase()}: ${message.content}`)
@@ -20,6 +21,7 @@ export function TranscriptActions({ messages, onClear }: TranscriptActionsProps)
     anchor.href = url;
     anchor.download = "uni-navigator-transcript.txt";
     anchor.click();
+    onDownload();
     URL.revokeObjectURL(url);
   }
 

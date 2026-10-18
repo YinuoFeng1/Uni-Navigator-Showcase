@@ -7,14 +7,12 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type HeaderProps = {
-  activePage?: "home" | "chat" | "study" | "admin";
+  activePage?: "home" | "chat" | "admin";
 };
 
 const navItems = [
   { href: "/", label: "Home", key: "home" },
   { href: "/chat", label: "Chat", key: "chat" },
-  { href: "/study", label: "Study mode", key: "study" },
-  { href: "/admin", label: "Admin", key: "admin" },
 ] as const;
 
 export function Header({ activePage = "home" }: HeaderProps) {

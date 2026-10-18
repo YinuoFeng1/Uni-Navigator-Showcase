@@ -1,0 +1,50 @@
+[
+  {
+    "question_id": "q_special_consideration_001",
+    "question": "Can I apply for special consideration if I was sick during an exam, and what evidence might be needed?",
+    "expected_source_ids": ["prepared-special-consideration"],
+    "expected_keywords": ["illness", "supporting evidence", "deadline"],
+    "expected_retrieval_status": "grounded",
+    "source_mode": "prepared",
+    "notes": "Clear single-source question about illness, exam impact, and evidence."
+  },
+  {
+    "question_id": "q_withdrawal_fees_001",
+    "question": "If I withdraw after the census date, could there be academic penalty or fee consequences?",
+    "expected_source_ids": [
+      "prepared-course-withdrawal-census",
+      "prepared-fees-refunds-appeals"
+    ],
+    "expected_keywords": ["census date", "academic penalty", "fee"],
+    "expected_retrieval_status": "grounded",
+    "source_mode": "prepared",
+    "notes": "Multi-condition question that should retrieve withdrawal and fee material."
+  },
+  {
+    "question_id": "q_progression_appeal_001",
+    "question": "I received an academic progression notice and I may need to appeal before a deadline. What should I do?",
+    "expected_source_ids": ["prepared-academic-progression"],
+    "expected_keywords": ["progression", "appeal", "deadline"],
+    "expected_retrieval_status": "grounded",
+    "source_mode": "prepared",
+    "notes": "High-stakes question where escalation guidance should be present."
+  },
+  {
+    "question_id": "q_overload_visa_001",
+    "question": "Can I take an enrolment overload if I have visa conditions and placement commitments?",
+    "expected_source_ids": ["prepared-study-load-overload"],
+    "expected_keywords": ["overload", "visa", "study load"],
+    "expected_retrieval_status": "grounded",
+    "source_mode": "prepared",
+    "notes": "Study load question with high-stakes visa and placement cues."
+  },
+  {
+    "question_id": "q_out_of_corpus_001",
+    "question": "Xylophone practice room booking",
+    "expected_source_ids": [],
+    "expected_keywords": [],
+    "expected_retrieval_status": "insufficient_evidence",
+    "source_mode": "prepared",
+    "notes": "Out-of-corpus probe; weak nearest chunks should not be treated as useful evidence."
+  }
+]

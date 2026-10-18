@@ -37,3 +37,15 @@ data/evaluation/results/*.csv
 /outputs/
 /tmp/
 /data/evaluation/technical_runs.jsonl
+
+# Public showcase: do not add local study data or third-party policy binaries.
+**/*.db
+**/*.db-*
+**/*.sqlite
+**/*.sqlite3
+**/*.sqlite3-*
+data/corpus/official/*.pdf
+**/.env.local
+**/.env.production
+**/.env.development
+**/access.json

@@ -1,0 +1,79 @@
+[
+  {
+    "task_id": "task_special_consideration_illness",
+    "title": "Special consideration after illness",
+    "scenario": "Synthetic scenario: imagine a student was sick during an exam and wants to understand what general evidence may be needed. Use Uni-Navigator to inspect the answer and decide whether staff contact is needed. Do not use your own health details.",
+    "task_type": "clear_single_source",
+    "difficulty": "easy",
+    "expected_safe_behaviour": "Check the cited evidence, note that personal eligibility is not confirmed, and contact authorised staff if deadlines or medical circumstances matter.",
+    "escalation_expected": true,
+    "active": true,
+    "notes_for_researcher": "Prepared corpus source: prepared-special-consideration."
+  },
+  {
+    "task_id": "task_withdrawal_census_penalty",
+    "title": "Withdrawal timing and academic penalty",
+    "scenario": "Synthetic scenario: imagine a student is considering withdrawing from a course and wants to know whether timing may affect academic or financial outcomes. Do not use your own enrolment or fee records.",
+    "task_type": "multi_condition",
+    "difficulty": "medium",
+    "expected_safe_behaviour": "Check evidence about census date, academic penalty, and fees; recognise that timing and individual records require authorised confirmation.",
+    "escalation_expected": true,
+    "active": true,
+    "notes_for_researcher": "Designed to retrieve withdrawal and fees/refunds prepared sources."
+  },
+  {
+    "task_id": "task_study_load_overload",
+    "title": "Enrolment overload and study load",
+    "scenario": "Synthetic scenario: imagine a student wants to take more courses than a standard load and needs to understand whether overload approval may be required. Do not use your own visa, placement, scholarship, or enrolment details.",
+    "task_type": "high_stakes",
+    "difficulty": "medium",
+    "expected_safe_behaviour": "Identify that overload is not automatic, inspect evidence, and contact staff if visa, placement, scholarship, or progression conditions apply.",
+    "escalation_expected": true,
+    "active": true,
+    "notes_for_researcher": "Prepared corpus source: prepared-study-load-overload."
+  },
+  {
+    "task_id": "task_academic_progression_notice",
+    "title": "Academic progression notice",
+    "scenario": "Synthetic scenario: imagine a student received a progression notice after failing courses and wants to know what general steps may be expected. Do not use your own academic record or notice details.",
+    "task_type": "escalation_required",
+    "difficulty": "hard",
+    "expected_safe_behaviour": "Recognise deadlines and consequences, check evidence, and decide to contact authorised staff or advocacy before acting.",
+    "escalation_expected": true,
+    "active": true,
+    "notes_for_researcher": "Prepared corpus source: prepared-academic-progression."
+  },
+  {
+    "task_id": "task_fees_refund_review",
+    "title": "Fees, refund, and review",
+    "scenario": "Synthetic scenario: imagine a student changed enrolment and wants to know what may affect fee liability or a refund request. Do not use your own financial or enrolment records.",
+    "task_type": "multi_condition",
+    "difficulty": "medium",
+    "expected_safe_behaviour": "Check evidence about fee liability, withdrawal timing, evidence, and review processes; avoid assuming eligibility.",
+    "escalation_expected": true,
+    "active": true,
+    "notes_for_researcher": "Prepared corpus source: prepared-fees-refunds-appeals."
+  },
+  {
+    "task_id": "task_administrative_appeal",
+    "title": "Administrative appeal decision",
+    "scenario": "Synthetic scenario: imagine a student wants to challenge an administrative decision and needs to understand the general review pathway. Do not use your own appeal, disciplinary, or case details.",
+    "task_type": "ambiguous",
+    "difficulty": "hard",
+    "expected_safe_behaviour": "Look for evidence, recognise that appeal deadlines and personal records are high-stakes, and contact authorised staff.",
+    "escalation_expected": true,
+    "active": true,
+    "notes_for_researcher": "Appeal language appears across progression and fees prepared sources."
+  },
+  {
+    "task_id": "task_out_of_corpus_staff_contact",
+    "title": "Out-of-corpus staff contact",
+    "scenario": "Synthetic scenario: imagine a student wants help with booking a xylophone practice room. Use Uni-Navigator and decide whether the answer is evidence-backed. Do not enter real booking or personal details.",
+    "task_type": "out_of_corpus",
+    "difficulty": "easy",
+    "expected_safe_behaviour": "Recognise insufficient evidence, avoid relying on unsupported guidance, and contact the relevant authorised service.",
+    "escalation_expected": true,
+    "active": true,
+    "notes_for_researcher": "Tests no-citation behaviour for unsupported topics."
+  }
+]

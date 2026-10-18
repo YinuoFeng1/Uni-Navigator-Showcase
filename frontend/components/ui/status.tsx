@@ -5,6 +5,7 @@ import {
   CheckCircle2,
   CircleDashed,
   FileCheck2,
+  HelpCircle,
   Info,
   Loader2,
   ShieldAlert,
@@ -165,15 +166,47 @@ export function LoadingIndicator({ label }: { label: string }) {
 }
 
 export function RetrievalStatusBadge({ status }: { status?: string }) {
-  const normalized = status?.toLowerCase() ?? "insufficient_evidence";
+  const normalized = status?.toLowerCase() ?? "unavailable";
   if (normalized === "grounded") {
     return <StatusChip label="Grounded evidence" tone="success" icon={FileCheck2} />;
   }
   if (normalized === "partial_evidence") {
     return <StatusChip label="Partial evidence" tone="warning" icon={AlertCircle} />;
   }
-  return <StatusChip label="Insufficient evidence" tone="uncertainty" icon={ShieldAlert} />;
+  if (normalized === "individual_assessment") {
+    return (
+      <StatusChip
+        label="Policy found; staff confirmation needed"
+        tone="warning"
+        icon={HelpCircle}
+      />
+    );
+  }
+  if (normalized === "ambiguous") {
+    return (
+      <StatusChip
+        label="Evidence found, personal review may be needed"
+        tone="uncertainty"
+        icon={HelpCircle}
+      />
+    );
+  }
+  if (normalized === "insufficient_evidence") {
+    return (
+      <StatusChip
+        label="Insufficient evidence"
+        tone="uncertainty"
+        icon={ShieldAlert}
+      />
+    );
+  }
+  return (
+    <StatusChip
+      label="Evidence status unavailable"
+      tone="neutral"
+      icon={CircleDashed}
+    />
+  );
 }
 
 export const ConnectionIcons = { connected: Wifi, unavailable: WifiOff };
-

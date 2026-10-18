@@ -10,6 +10,7 @@ import {
   Wifi,
 } from "lucide-react";
 import { ExportButton } from "@/components/admin/ExportButton";
+import { ResearchExports } from "@/components/admin/ResearchExports";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { StatusChip, SystemStatusBar } from "@/components/ui/status";
@@ -397,6 +398,7 @@ export function AdminDashboard({ workbench = false }: { workbench?: boolean }) {
         </div>
       </section>
 
+      <ResearchExports />
       {error ? (
         <div
           className="rounded-lg border border-[var(--ui-danger)] bg-[var(--ui-danger-subtle)] p-5 text-sm font-bold text-[var(--ui-danger)]"

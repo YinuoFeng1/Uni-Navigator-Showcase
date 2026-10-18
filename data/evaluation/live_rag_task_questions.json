@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "dataset_version": "live-rag-task-questions-2026-08-27.1",
+  "purpose": "Technical retrieval, citation, scope and escalation evaluation only. These cases are never used as participant answers.",
+  "corpus_fingerprint": "sha256:f006fc4e2d56981da098cdd31156dc011381169329fb7c7d245391672cb8f931",
+  "cases": [
+    {
+      "case_id": "deferred-exam-medical-evidence",
+      "task_id": "task_special_consideration_illness",
+      "questions": [
+        "I was sick during an exam, what evidence may be needed?",
+        "Can illness support a deferred exam request?",
+        "I missed my exam because I was unwell. How do I apply?",
+        "What documents do I need if I was ill on exam day?",
+        "How long do I have to request a deferred exam?",
+        "Can I sit the exam later for medical reasons?"
+      ],
+      "expected_source_ids": ["uq-examinations-procedure"],
+      "expected_page_ranges": [{"source_id": "uq-examinations-procedure", "page_start": 11, "page_end": 12}],
+      "expected_escalation": true,
+      "expected_scope": "in_scope"
+    },
+    {
+      "case_id": "withdrawal-census-academic-financial-effects",
+      "task_id": "task_withdrawal_census_penalty",
+      "questions": [
+        "Does withdrawing after census affect fees or grades?",
+        "What changes if I withdraw before or after census?",
+        "Can I drop a subject after the census date?",
+        "Will withdrawing late affect my transcript or fees?",
+        "What happens if I remove a course after census?",
+        "Can special circumstances help with a late withdrawal?"
+      ],
+      "expected_source_ids": ["uq-enrolment-procedure", "uq-removal-courses-special-circumstances-procedure"],
+      "expected_page_ranges": [
+        {"source_id": "uq-enrolment-procedure", "page_start": 8, "page_end": 8},
+        {"source_id": "uq-removal-courses-special-circumstances-procedure", "page_start": 1, "page_end": 1}
+      ],
+      "expected_escalation": true,
+      "expected_scope": "in_scope"
+    },
+    {
+      "case_id": "semester-enrolment-limit-approval",
+      "task_id": "task_study_load_overload",
+      "questions": [
+        "Can I take more than the standard study load?",
+        "Who approves an enrolment overload?",
+        "Can I enrol in extra courses this semester?",
+        "Do I need permission to exceed the normal study load?",
+        "Who can approve more subjects than the semester limit?",
+        "How do I request a course overload?"
+      ],
+      "expected_source_ids": ["uq-enrolment-procedure"],
+      "expected_page_ranges": [{"source_id": "uq-enrolment-procedure", "page_start": 13, "page_end": 13}],
+      "expected_escalation": true,
+      "expected_scope": "in_scope"
+    },
+    {
+      "case_id": "progression-notice-improvement-plan",
+      "task_id": "task_academic_progression_notice",
+      "questions": [
+        "What should a student do after a progression notice?",
+        "Is a Progression Improvement Plan required?",
+        "I failed several courses and received a notice. What happens next?",
+        "Do I need to submit a plan after an intervention notice?",
+        "What if my Progression Improvement Plan is late?",
+        "How should I respond to an academic progression warning?"
+      ],
+      "expected_source_ids": ["uq-academic-progression-procedure"],
+      "expected_page_ranges": [{"source_id": "uq-academic-progression-procedure", "page_start": 3, "page_end": 4}],
+      "expected_escalation": true,
+      "expected_scope": "in_scope"
+    },
+    {
+      "case_id": "fee-liability-refund-review",
+      "task_id": "task_fees_refund_review",
+      "questions": [
+        "Can special circumstances remove fee liability?",
+        "How are fees affected when a course is removed?",
+        "Can I get a refund after withdrawing from a course?",
+        "What happens to my tuition fees if I drop a subject?",
+        "How can I ask for a refund decision to be reviewed?",
+        "Are fees refundable before or after the census date?"
+      ],
+      "expected_source_ids": ["uq-student-refunds-procedure"],
+      "expected_page_ranges": [
+        {"source_id": "uq-student-refunds-procedure", "page_start": 1, "page_end": 2},
+        {"source_id": "uq-student-refunds-procedure", "page_start": 5, "page_end": 5}
+      ],
+      "expected_escalation": true,
+      "expected_scope": "in_scope"
+    },
+    {
+      "case_id": "administrative-decision-review-boundary",
+      "task_id": "task_administrative_appeal",
+      "questions": [
+        "How can a student challenge an administrative decision?",
+        "What evidence can support an internal appeal?",
+        "Can I appeal a university academic decision?",
+        "Who reviews an academic administrative appeal?",
+        "How long do I have to challenge the decision?",
+        "What should I do before appealing to SAAAC?"
+      ],
+      "expected_source_ids": ["uq-academic-administrative-appeals-policy", "uq-academic-administrative-appeals-procedure"],
+      "expected_page_ranges": [
+        {"source_id": "uq-academic-administrative-appeals-policy", "page_start": 1, "page_end": 1},
+        {"source_id": "uq-academic-administrative-appeals-procedure", "page_start": 1, "page_end": 2}
+      ],
+      "expected_escalation": true,
+      "expected_scope": "in_scope"
+    },
+    {
+      "case_id": "out-of-corpus-room-booking",
+      "task_id": "task_out_of_corpus_staff_contact",
+      "questions": [
+        "How do I book a xylophone practice room?",
+        "Can Uni-Navigator help reserve a music room?",
+        "Where can I reserve a music practice room?",
+        "Can I book an instrument room on campus?",
+        "Which UQ service manages rehearsal room bookings?",
+        "Help me reserve a room for xylophone practice."
+      ],
+      "expected_source_ids": [],
+      "expected_page_ranges": [],
+      "expected_escalation": true,
+      "expected_scope": "out_of_scope"
+    }
+  ]
+}

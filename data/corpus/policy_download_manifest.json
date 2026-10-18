@@ -1,0 +1,86 @@
+[
+  {
+    "filename": "Academic_Administrative_Appeals_by_Students_Policy.pdf",
+    "source_id": "uq-academic-administrative-appeals-policy",
+    "source_url": "https://policies.uq.edu.au/download.php?id=130&version=1",
+    "version": "1",
+    "sha256": "f6a9c3c58fcf98b60c5dec0f034a3aa52c42690b9183401a912801a7879dd430"
+  },
+  {
+    "filename": "Academic_Administrative_Appeals_by_Students_Procedure.pdf",
+    "source_id": "uq-academic-administrative-appeals-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=175&version=1",
+    "version": "1",
+    "sha256": "812c6711633d8a6a0453d25e7472e81b0a54e9226b0db2896b9d825a1ebf6d2c"
+  },
+  {
+    "filename": "Academic_Progression_Procedure.pdf",
+    "source_id": "uq-academic-progression-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=180&version=3",
+    "version": "3",
+    "sha256": "6aead4f9b17f953007d6301a7c9c653b2dd70e3b3cee325a5e157f0c5e2826ec"
+  },
+  {
+    "filename": "Assessment_Policy.pdf",
+    "source_id": "uq-assessment-policy",
+    "source_url": "https://policies.uq.edu.au/download.php?id=134&version=3",
+    "version": "3",
+    "sha256": "7a5f804d41f7392f4a06a0217127b1e25d71e8c241d82ab5cdeb81574b4e2f8f"
+  },
+  {
+    "filename": "Assessment_Procedure.pdf",
+    "source_id": "uq-assessment-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=184&version=9",
+    "version": "9",
+    "sha256": "d7b359fbdef0a337bfded7395309d178e3a0e31b383b208545031b824dcb67ef"
+  },
+  {
+    "filename": "Enrolment_Procedure.pdf",
+    "source_id": "uq-enrolment-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=202&version=3",
+    "version": "3",
+    "sha256": "608529c38b15b1b8048cd6aac9148461a4b2f8e93152cfecf5ee11da45c89cdd"
+  },
+  {
+    "filename": "Examinations_Procedure.pdf",
+    "source_id": "uq-examinations-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=203&version=8",
+    "version": "8",
+    "sha256": "33680f218e2696a0edb1fe958e1b66fd08f05801470f8523c10ad1bd8212d877"
+  },
+  {
+    "filename": "Reasonable_Adjustments_for_Students_Procedure.pdf",
+    "source_id": "uq-reasonable-adjustments-students-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=239&version=3",
+    "version": "3",
+    "sha256": "f80e0bc5e5ae2eb7322bc1c04fd98eaf557fddfb16d589fb64a3c2ba6066260e"
+  },
+  {
+    "filename": "Removal_of_Courses_Due_to_Special_Circumstances_Procedure.pdf",
+    "source_id": "uq-removal-courses-special-circumstances-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=218&version=6",
+    "version": "6",
+    "sha256": "672883d8f4856aa8fac925e8cd9e36526e2ba349d75b5d8286dea154e0819771"
+  },
+  {
+    "filename": "Student_Fees_Policy.pdf",
+    "source_id": "uq-student-fees-policy",
+    "source_url": "https://policies.uq.edu.au/download.php?id=146&version=2",
+    "version": "2",
+    "sha256": "60d89b535f476674a46470d35e4f60739c5a53f1536989df0e04485eff54f0a8"
+  },
+  {
+    "filename": "Student_Grievance_Resolution_Procedure.pdf",
+    "source_id": "uq-student-grievance-resolution-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=223&version=8",
+    "version": "8",
+    "sha256": "546d4b6ec386010fd1dce1c7685b437f3f4d5c3e459cb4ee4bc007a1a07ebfd0"
+  },
+  {
+    "filename": "Student_Refunds_Procedure.pdf",
+    "source_id": "uq-student-refunds-procedure",
+    "source_url": "https://policies.uq.edu.au/download.php?id=226&version=2",
+    "version": "2",
+    "sha256": "e068e14934a9f79bc46f29888de636253b0489742fe4d88fbe92b903eb564c8a"
+  }
+]

@@ -1,16 +1,16 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { ShieldCheck, Send } from "lucide-react";
+import { Send, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 type QuestionInputProps = {
-  onSubmit: (question: string, sensitiveWarningShown?: boolean) => void;
+  onSubmit: (
+    question: string,
+    sensitiveWarningShown?: boolean,
+  ) => Promise<boolean>;
   disabled?: boolean;
   disabledMessage?: string;
-  contextLabel?: string;
-  workbench?: boolean;
 };
 
 const sensitivePattern =
@@ -20,33 +20,33 @@ export function QuestionInput({
   onSubmit,
   disabled = false,
   disabledMessage,
-  contextLabel,
-  workbench = false,
 }: QuestionInputProps) {
   const [value, setValue] = useState("");
   const sensitiveWarningShown = sensitivePattern.test(value);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const question = value.trim();
     if (!question) return;
-    onSubmit(question, sensitiveWarningShown);
-    setValue("");
+    const completed = await onSubmit(question, sensitiveWarningShown);
+    if (completed) {
+      setValue("");
+    }
   }
 
   return (
-    <form
-      className={cn("grid gap-2", workbench && "workbench-composer")}
-      onSubmit={handleSubmit}
-    >
-      {contextLabel ? (
-        <div className="flex items-center justify-between gap-3 text-xs">
-          <span className="font-bold text-[var(--ui-text-primary)]">Current task</span>
-          <span className="min-w-0 truncate text-[var(--ui-text-muted)]">
-            {contextLabel}
-          </span>
-        </div>
-      ) : null}
+    <form className="grid gap-2" onSubmit={handleSubmit}>
+      <p className="flex items-start gap-2 rounded-md border border-[var(--border-light)] bg-[var(--background-soft)] px-3 py-2 text-xs leading-5 text-[var(--text-secondary)]">
+        <ShieldAlert
+          className="mt-0.5 shrink-0 text-[var(--uq-purple)]"
+          size={15}
+          aria-hidden="true"
+        />
+        <span>
+          Do not enter names, student numbers, contact details, medical details,
+          or documents. Ask a general or researcher-provided policy question.
+        </span>
+      </p>
       <div className="flex items-end gap-2">
         <textarea
           className="min-h-[5.5rem] flex-1 resize-y rounded-md border border-[var(--border-light)] bg-white px-4 py-3 text-sm leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus-ring)]"
@@ -59,13 +59,13 @@ export function QuestionInput({
         />
         <Button
           type="submit"
-          size={workbench ? "icon" : "default"}
+          size="default"
           disabled={disabled || value.trim().length === 0}
           aria-label="Send question"
           title="Send question"
         >
           <Send size={18} aria-hidden="true" />
-          {!workbench ? <span className="hidden sm:inline">Send</span> : null}
+          <span className="hidden sm:inline">Send</span>
         </Button>
       </div>
       {disabled && disabledMessage ? (
@@ -79,15 +79,9 @@ export function QuestionInput({
       {sensitiveWarningShown ? (
         <p className="rounded-md border border-[var(--uq-gold)] bg-[var(--warning-soft)] px-3 py-2 text-xs font-bold leading-5 text-[var(--text-primary)]">
           This looks like it may include personal or sensitive information. Use
-          the synthetic scenario only and remove real personal details.
+          a general question and remove real personal details.
         </p>
       ) : null}
-      <p className="flex items-start gap-1.5 text-xs leading-5 text-[var(--text-secondary)]">
-        <ShieldCheck className="mt-0.5 shrink-0" size={14} aria-hidden="true" />
-        <span>
-          Use the synthetic scenario only. Do not type real personal or sensitive details.
-        </span>
-      </p>
     </form>
   );
 }

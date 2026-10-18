@@ -5,13 +5,11 @@ import {
   CheckCircle2,
   ExternalLink,
   FileText,
-  ThumbsUp,
-  TriangleAlert,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { InlineNotice, LoadingIndicator, SavedIndicator } from "@/components/ui/status";
+import { InlineNotice, LoadingIndicator } from "@/components/ui/status";
 import type { Citation } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -20,13 +18,8 @@ type EvidencePanelProps = {
   isOpen: boolean;
   onClose: () => void;
   onMarkChecked: () => void;
-  onSupportRatingChange?: (rating: number) => void;
-  onHelpfulChange?: (value: boolean) => void;
-  onConfusingChange?: (value: boolean) => void;
+  onOpenSource: () => void;
   checked?: boolean;
-  supportRating?: number;
-  helpful?: boolean;
-  confusing?: boolean;
   variant?: "panel" | "inspector";
   citationPosition?: { current: number; total: number };
   isLoading?: boolean;
@@ -63,13 +56,8 @@ export function EvidencePanel({
   isOpen,
   onClose,
   onMarkChecked,
-  onSupportRatingChange,
-  onHelpfulChange,
-  onConfusingChange,
+  onOpenSource,
   checked = false,
-  supportRating,
-  helpful = false,
-  confusing = false,
   variant = "panel",
   citationPosition,
   isLoading = false,
@@ -147,10 +135,6 @@ export function EvidencePanel({
         ? "Official guidance"
         : "Prepared prototype";
   const sourceUrl = citation?.sourceUrl ?? citation?.url;
-  const hasSavedEvidenceState = Boolean(
-    checked || supportRating || helpful || confusing,
-  );
-
   return (
     <>
       {variant === "inspector" ? (
@@ -252,65 +236,13 @@ export function EvidencePanel({
 
           {sourceUrl ? (
             <Button asChild type="button" variant="secondary">
-              <a href={sourceUrl} target="_blank" rel="noreferrer">
+              <a href={sourceUrl} target="_blank" rel="noreferrer" onClick={onOpenSource}>
                 <ExternalLink size={17} aria-hidden="true" />
                 Open official source
               </a>
             </Button>
           ) : null}
 
-          {hasSavedEvidenceState ? <SavedIndicator label="Evidence response saved" /> : null}
-
-          <div className="grid gap-3 rounded-lg border border-[var(--border-light)] p-4">
-            <p className="text-sm font-bold text-[var(--text-primary)]">
-              This evidence supports the answer
-            </p>
-            <div
-              className="flex flex-wrap gap-2"
-              role="radiogroup"
-              aria-label="Evidence support rating"
-            >
-              {[1, 2, 3, 4, 5].map((rating) => (
-                <button
-                  key={rating}
-                  type="button"
-                  role="radio"
-                  aria-checked={supportRating === rating}
-                  className={cn(
-                    "flex h-9 w-9 items-center justify-center rounded-md border border-[var(--border-light)] bg-white text-sm font-black text-[var(--text-secondary)]",
-                    supportRating === rating &&
-                      "border-[var(--uq-purple)] bg-[var(--uq-purple)] text-white",
-                  )}
-                  onClick={() => onSupportRatingChange?.(rating)}
-                >
-                  {rating}
-                </button>
-              ))}
-            </div>
-            <div className="flex justify-between text-xs text-[var(--text-secondary)]">
-              <span>Not supported</span>
-              <span>Very well supported</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <Button
-              type="button"
-              variant={helpful ? "subtle" : "secondary"}
-              onClick={() => onHelpfulChange?.(!helpful)}
-            >
-              <ThumbsUp size={17} aria-hidden="true" />
-              {helpful ? "Marked helpful" : "Mark helpful"}
-            </Button>
-            <Button
-              type="button"
-              variant={confusing ? "warning" : "secondary"}
-              onClick={() => onConfusingChange?.(!confusing)}
-            >
-              <TriangleAlert size={17} aria-hidden="true" />
-              {confusing ? "Marked confusing" : "Mark confusing"}
-            </Button>
-          </div>
         </div>
       ) : (
         <div className="p-5">

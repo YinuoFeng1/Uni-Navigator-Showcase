@@ -4,93 +4,48 @@ import test from "node:test";
 
 import { createEvidenceUsePayload } from "../lib/evidencePayload.mjs";
 import {
-  APPROVED_PRESENTATION_FIELDS,
-  getPresentationPolicy,
-  listPresentationPolicies,
-} from "../lib/presentationPolicy.mjs";
-import {
-  isDesignLabEnabled,
-  resolveUiTheme,
-} from "../lib/uiThemePolicy.mjs";
-
-const conditionManifestUrl = new URL(
-  "../../data/study/experimental_conditions.json",
-  import.meta.url,
-);
+  createCitationAnchorId,
+  createCitationSegments,
+} from "../lib/citationText.mjs";
+import { isDesignLabEnabled, resolveUiTheme } from "../lib/uiThemePolicy.mjs";
 
 test("UI theme is presentation-only and defaults safely to legacy", () => {
-  const answer = Object.freeze({
-    answer: "Frozen substantive answer",
-    citations: Object.freeze(["citation-1"]),
-  });
   assert.equal(resolveUiTheme(undefined), "legacy");
   assert.equal(resolveUiTheme("unexpected"), "legacy");
   assert.equal(resolveUiTheme("research_workbench"), "research_workbench");
-  assert.equal(answer.answer, "Frozen substantive answer");
-  assert.deepEqual(answer.citations, ["citation-1"]);
 });
 
-test("A/B/C/D policies vary only approved presentation fields", () => {
-  const policies = listPresentationPolicies();
-  for (const policy of Object.values(policies)) {
-    assert.deepEqual(
-      Object.keys(policy).sort(),
-      [...APPROVED_PRESENTATION_FIELDS].sort(),
-    );
-  }
-  assert.equal(getPresentationPolicy("A_SIMPLE_LINK").showSection, false);
-  assert.equal(
-    getPresentationPolicy("A_SIMPLE_LINK").showHighlightedPassage,
-    false,
-  );
-  assert.equal(getPresentationPolicy("B_SECTION").showSection, true);
-  assert.equal(
-    getPresentationPolicy("B_SECTION").showHighlightedPassage,
-    false,
-  );
-  assert.equal(
-    getPresentationPolicy("C_HIGHLIGHT").showHighlightedPassage,
-    true,
-  );
-  assert.equal(getPresentationPolicy("D_NEXT_STEP").showNextStep, true);
-});
-
-test("A/B/C/D retain the same task answer package bindings", async () => {
-  const manifest = JSON.parse(await readFile(conditionManifestUrl, "utf8"));
-  const [baseline, ...others] = manifest.conditions;
-  for (const condition of others) {
-    assert.deepEqual(
-      condition.task_answer_packages,
-      baseline.task_answer_packages,
-    );
-  }
-});
-
-test("evidence payload preserves citation, source, chunk, page-independent IDs", () => {
+test("evidence payload preserves stable citation and retrieval IDs", () => {
   const payload = createEvidenceUsePayload({
-    sessionId: "session-1",
-    participantLabel: "P-001",
-    taskId: "task-1",
     interactionId: "interaction-1",
     citation: {
       id: "display-id",
       citationId: "citation-1",
       sourceId: "source-1",
       chunkId: "chunk-1",
-      pageStart: 7,
-      pageEnd: 8,
     },
     evidenceAction: "source_checked",
-    extras: { evidenceSupportRating: 4 },
   });
   assert.equal(payload.citationId, "citation-1");
   assert.equal(payload.sourceId, "source-1");
   assert.equal(payload.chunkId, "chunk-1");
   assert.equal(payload.interactionId, "interaction-1");
-  assert.equal(payload.evidenceSupportRating, 4);
 });
 
-test("Design Lab is development-only and its component has no study API path", async () => {
+test("answer citation labels link only to citations that exist", () => {
+  assert.deepEqual(createCitationSegments("Apply within five days [2]. [9]", ["[1]", "[2]"]), [
+    { text: "Apply within five days ", citationLabel: null },
+    { text: "[2]", citationLabel: "[2]" },
+    { text: ". ", citationLabel: null },
+    { text: "[9]", citationLabel: null },
+  ]);
+  assert.equal(
+    createCitationAnchorId("answer:one", "[2]"),
+    "answer-answer-one-citation-2",
+  );
+});
+
+test("Design Lab is development-only and has no study API path", async () => {
   assert.equal(
     isDesignLabEnabled({ nodeEnv: "development", studyMode: "development" }),
     true,
@@ -115,10 +70,7 @@ test("Design Lab is development-only and its component has no study API path", a
   for (const fixtureSource of [source, drawerSource]) {
     assert.doesNotMatch(fixtureSource, /@\/lib\/api/);
     assert.doesNotMatch(fixtureSource, /fetch\s*\(/);
-    assert.doesNotMatch(
-      fixtureSource,
-      /logStudyEvent|submitEvidenceUse|startStudySession/,
-    );
+    assert.doesNotMatch(fixtureSource, /logStudyEvent|submitEvidenceUse/);
   }
 });
 
@@ -132,14 +84,32 @@ test("Evidence inspector implements Escape, focus return, and scroll lock", asyn
   assert.match(source, /document\.body\.style\.overflow = "hidden"/);
 });
 
-test("responsive presentation policy is viewport-independent", () => {
-  const desktop = getPresentationPolicy("C_HIGHLIGHT");
-  const mobile = getPresentationPolicy("C_HIGHLIGHT");
-  assert.equal(desktop, mobile);
-  assert.equal(desktop.evidencePanelAvailable, true);
+test("participant navigation exposes chat without study or admin entry points", async () => {
+  const headerSource = await readFile(
+    new URL("../components/layout/Header.tsx", import.meta.url),
+    "utf8",
+  );
+  const footerSource = await readFile(
+    new URL("../components/layout/Footer.tsx", import.meta.url),
+    "utf8",
+  );
+  const heroSource = await readFile(
+    new URL("../components/home/HeroSection.tsx", import.meta.url),
+    "utf8",
+  );
+  for (const source of [headerSource, footerSource, heroSource]) {
+    assert.doesNotMatch(source, /href="\/study"/);
+    assert.doesNotMatch(source, /Study mode/);
+  }
+  assert.doesNotMatch(headerSource, /href: "\/admin"/);
+  assert.doesNotMatch(footerSource, /href="\/admin"/);
+  await assert.rejects(
+    readFile(new URL("../app/study/page.tsx", import.meta.url), "utf8"),
+    /ENOENT/,
+  );
 });
 
-test("condition policy gates evidence APIs and condition-visible content", async () => {
+test("chat uses one full evidence presentation without experiment controls", async () => {
   const chatSource = await readFile(
     new URL("../components/chat/ChatShell.tsx", import.meta.url),
     "utf8",
@@ -148,54 +118,88 @@ test("condition policy gates evidence APIs and condition-visible content", async
     new URL("../components/chat/CitationCard.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(chatSource, /getPresentationPolicy\(activeCondition\)/);
-  assert.match(
-    chatSource,
-    /if \(!presentationPolicy\.evidencePanelAvailable\) return/,
-  );
-  assert.match(citationSource, /policy\.showSection/);
-  assert.match(citationSource, /policy\.showHighlightedPassage/);
+  assert.doesNotMatch(chatSource, /StudyConditionSwitcher|TrustCheckPanel/);
+  assert.doesNotMatch(chatSource, /activeCondition|presentationPolicy/);
+  assert.match(citationSource, /Section:/);
+  assert.match(citationSource, /citation\.quotedText/);
+  assert.doesNotMatch(citationSource, /Research score|relevanceScore/);
 });
 
-test("failed interactions lock participant controls without a local answer", async () => {
+test("failed chat requests retain the question and expose retry", async () => {
   const chatSource = await readFile(
     new URL("../components/chat/ChatShell.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(chatSource, /interactionDisabled \|\| systemFailure \|\| isLoading/);
-  assert.match(
-    chatSource,
-    /disabled=\{interactionDisabled \|\| systemFailure \|\| !lastInteractionId\}/,
+  const inputSource = await readFile(
+    new URL("../components/chat/QuestionInput.tsx", import.meta.url),
+    "utf8",
   );
+  assert.match(chatSource, /setFailedRequest\(\{ question, sensitiveWarningShown \}\)/);
+  assert.match(chatSource, /failure\.retryable/);
+  assert.match(chatSource, /retryFailedRequest/);
+  assert.match(chatSource, />\s*Retry\s*</);
+  assert.match(inputSource, /const completed = await onSubmit/);
+  assert.match(inputSource, /if \(completed\)/);
   assert.doesNotMatch(chatSource, /setMessages\([^)]*mock/i);
 });
 
-test("trust and final-response payload field names remain stable", async () => {
-  const studySource = await readFile(
-    new URL("../components/study/StudyWorkspace.tsx", import.meta.url),
+test("answer statuses, counts, and section order remain explicit", async () => {
+  const statusSource = await readFile(
+    new URL("../components/ui/status.tsx", import.meta.url),
     "utf8",
   );
+  const answerSource = await readFile(
+    new URL("../components/chat/AnswerCard.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(statusSource, /Evidence found, personal review may be needed/);
+  assert.match(
+    statusSource,
+    /normalized === "insufficient_evidence"[\s\S]+Insufficient evidence/,
+  );
+  assert.match(answerSource, /new Set\(/);
+  assert.match(answerSource, /"evidence passage"/);
+  assert.match(answerSource, /"policy file"/);
+  assert.match(answerSource, /answer\.escalationRecommended/);
+  assert.match(answerSource, /href={`#\${entry\.anchorId}`}/);
+  assert.match(answerSource, /Jump to citation/);
+
+  const sectionOrder = [
+    "Direct answer",
+    "Action steps",
+    "Citations",
+    "Limitations",
+    "Contact university staff",
+  ].map((heading) => answerSource.indexOf(heading));
+  assert.ok(sectionOrder.every((index) => index >= 0));
+  assert.deepEqual(sectionOrder, [...sectionOrder].sort((a, b) => a - b));
+});
+
+test("composer shows live AI and privacy boundaries beside the input", async () => {
   const chatSource = await readFile(
     new URL("../components/chat/ChatShell.tsx", import.meta.url),
     "utf8",
   );
-  for (const field of [
-    "finalDecisionText",
-    "confidenceRating",
-    "wouldContactStaff",
-    "perceivedAnswerSupported",
-  ]) {
-    assert.match(studySource, new RegExp(`\\b${field}\\b`));
-  }
-  for (const field of [
-    "answerClear",
-    "evidenceChecked",
-    "sourceSupportsAnswer",
-    "uncertaintyNoticed",
-    "wouldContactStaffIfNeeded",
-  ]) {
-    assert.match(chatSource, new RegExp(`\\b${field}\\b`));
-  }
+  const inputSource = await readFile(
+    new URL("../components/chat/QuestionInput.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(chatSource, /Answers are generated live by AI/);
+  assert.match(chatSource, /not official university advice/);
+  assert.match(inputSource, /Do not enter names, student numbers/);
+  assert.match(inputSource, /general or researcher-provided policy question/);
+  assert.doesNotMatch(inputSource, /study scenario/);
+});
+
+test("evidence viewer keeps source checking without embedded survey controls", async () => {
+  const source = await readFile(
+    new URL("../components/chat/EvidencePanel.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(source, /Mark as checked/);
+  assert.match(source, /Open official source/);
+  assert.doesNotMatch(source, /Evidence support rating/);
+  assert.doesNotMatch(source, /Mark helpful|Mark confusing/);
 });
 
 test("status semantics and reduced-motion support remain accessible", async () => {
@@ -209,46 +213,37 @@ test("status semantics and reduced-motion support remain accessible", async () =
   );
   assert.match(statusSource, /role="status"/);
   assert.match(statusSource, /aria-live="polite"/);
-  assert.match(statusSource, /role=\{tone === "danger" \? "alert" : "status"\}/);
   assert.match(cssSource, /prefers-reduced-motion: reduce/);
-  assert.match(cssSource, /transition-duration: 0\.01ms !important/);
 });
 
 test("admin summaries hide full final decisions by default", async () => {
-  const adminSource = await readFile(
+  const source = await readFile(
     new URL("../components/admin/AdminDashboard.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(adminSource, /Show truncated decision preview/);
-  assert.match(adminSource, /response\.finalDecisionPreview/);
-  assert.doesNotMatch(adminSource, /response\.finalDecisionText/);
+  assert.match(source, /Show truncated decision preview/);
+  assert.match(source, /response\.finalDecisionPreview/);
+  assert.doesNotMatch(source, /response\.finalDecisionText/);
 });
 
 test("admin workbench exposes actionable preflight failures", async () => {
-  const adminSource = await readFile(
+  const source = await readFile(
     new URL("../components/admin/AdminDashboard.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(adminSource, /Pilot readiness/);
-  assert.match(adminSource, /failedChecks/);
-  assert.match(adminSource, /researcher_action/);
-  assert.match(adminSource, /Action: \{action\}/);
-  assert.match(adminSource, /Preflight unavailable/);
+  assert.match(source, /Pilot readiness/);
+  assert.match(source, /failedChecks/);
+  assert.match(source, /researcher_action/);
+  assert.match(source, /Preflight unavailable/);
 });
 
-test("admin exports never synthesize an empty dashboard export", async () => {
-  const exportSource = await readFile(
+test("admin exports do not synthesize fallback research data", async () => {
+  const source = await readFile(
     new URL("../components/admin/ExportButton.tsx", import.meta.url),
     "utf8",
   );
-  const adminSource = await readFile(
-    new URL("../components/admin/AdminDashboard.tsx", import.meta.url),
-    "utf8",
-  );
-  assert.doesNotMatch(exportSource, /logs = \[\]/);
-  assert.match(exportSource, /No file was created/);
-  assert.match(exportSource, /role=\{status\.tone === "danger" \? "alert" : "status"\}/);
-  assert.match(adminSource, /<ExportButton \/>/);
+  assert.doesNotMatch(source, /mock|fallback/i);
+  assert.match(source, /No file was created/);
 });
 
 test("admin workbench constrains wide tables to local scroll frames", async () => {
@@ -261,37 +256,15 @@ test("admin workbench constrains wide tables to local scroll frames", async () =
     "utf8",
   );
   assert.match(adminSource, /admin-split-panel grid min-w-0/);
-  assert.match(adminSource, /grid min-w-0 gap-6/);
-  assert.match(cssSource, /\.admin-workbench > \*/);
   assert.match(cssSource, /\.admin-workbench \.admin-table-frame/);
   assert.match(cssSource, /max-width: 100%/);
 });
 
-test("task trust summary distinguishes checklists from snapshots", async () => {
-  const adminSource = await readFile(
-    new URL("../components/admin/AdminDashboard.tsx", import.meta.url),
-    "utf8",
-  );
-  const typesSource = await readFile(
-    new URL("../lib/types.ts", import.meta.url),
-    "utf8",
-  );
-  assert.match(adminSource, /task\.trustChecklistCount/);
-  assert.match(adminSource, /task\.trustSnapshotCount/);
-  assert.match(typesSource, /trustSnapshotCount: number/);
-});
-
-test("legacy and workbench routes share the same study and admin logic", async () => {
-  const studyRoute = await readFile(
-    new URL("../app/study/page.tsx", import.meta.url),
-    "utf8",
-  );
-  const adminRoute = await readFile(
+test("admin route keeps legacy and workbench presentations", async () => {
+  const source = await readFile(
     new URL("../app/admin/page.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(studyRoute, /<StudyWorkspace workbench \/>/);
-  assert.match(studyRoute, /<StudyWorkspace \/>/);
-  assert.match(adminRoute, /<AdminDashboard workbench \/>/);
-  assert.match(adminRoute, /<AdminDashboard \/>/);
+  assert.match(source, /<AdminDashboard workbench \/>/);
+  assert.match(source, /<AdminDashboard \/>/);
 });

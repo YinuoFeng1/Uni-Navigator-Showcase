@@ -1,0 +1,417 @@
+{
+  "registry_version": "2026-09-02.1",
+  "institution": "The University of Queensland",
+  "purpose": "Auditable pilot-study scope rules for the twelve official policy documents in the Uni-Navigator corpus.",
+  "topics": [
+    {
+      "topic_id": "assessment",
+      "display_name": "Assessment",
+      "supported_intents": [
+        "assessment extensions and adjustments",
+        "assessment submission and late penalties",
+        "assessment remarking and review",
+        "assessment-related special consideration"
+      ],
+      "representative_terms": [
+        "assessment extension",
+        "late submission",
+        "remark",
+        "re-mark",
+        "re-marked",
+        "assessment adjustment",
+        "special consideration",
+        "assessment due date",
+        "coursework",
+        "approved extension",
+        "extension request",
+        "exceptional circumstance"
+      ],
+      "common_paraphrases": [
+        "more time for my assignment",
+        "missed an assessment deadline",
+        "challenge my assessment mark",
+        "medical issue affected my assignment"
+      ],
+      "source_ids": [
+        "uq-assessment-policy",
+        "uq-assessment-procedure",
+        "uq-reasonable-adjustments-students-procedure"
+      ],
+      "unsupported_adjacent_topics": [
+        "course-specific assessment instructions",
+        "school or faculty marking rubrics",
+        "academic misconduct investigations"
+      ],
+      "default_escalation_category": "contact_faculty_or_student_centre"
+    },
+    {
+      "topic_id": "examinations",
+      "display_name": "Examinations",
+      "supported_intents": [
+        "exam attendance and conduct",
+        "deferred examinations",
+        "exam adjustments and disruptions",
+        "exam result queries covered by the procedure"
+      ],
+      "representative_terms": [
+        "exam",
+        "examination",
+        "deferred exam",
+        "missed exam",
+        "exam venue",
+        "exam disruption",
+        "exam adjustment"
+      ],
+      "common_paraphrases": [
+        "I was sick on exam day",
+        "can I sit the exam later",
+        "what happens if I arrive late to an exam",
+        "something interrupted my exam"
+      ],
+      "source_ids": [
+        "uq-examinations-procedure",
+        "uq-reasonable-adjustments-students-procedure"
+      ],
+      "unsupported_adjacent_topics": [
+        "personal exam timetable troubleshooting",
+        "course-specific quiz rules",
+        "bus was late",
+        "public transport delay",
+        "graduation eligibility"
+      ],
+      "default_escalation_category": "contact_examinations"
+    },
+    {
+      "topic_id": "enrolment",
+      "display_name": "Enrolment",
+      "supported_intents": [
+        "adding or changing enrolment",
+        "enrolment deadlines and conditions",
+        "late enrolment",
+        "course and program enrolment administration"
+      ],
+      "representative_terms": [
+        "enrolment",
+        "enroll",
+        "add a course",
+        "late enrolment",
+        "course overload",
+        "overload",
+        "extra courses",
+        "normal study load",
+        "semester enrolment limit",
+        "census date",
+        "course registration",
+        "prerequisite",
+        "confirmation of enrolment",
+        "cricos",
+        "mysi net",
+        "drop a subject",
+        "permanent residency",
+        "fee status"
+      ],
+      "common_paraphrases": [
+        "join a class after the deadline",
+        "change the subjects I am taking",
+        "I cannot enrol in my course",
+        "register for a subject late",
+        "one course must be completed before another"
+      ],
+      "source_ids": ["uq-enrolment-procedure"],
+      "unsupported_adjacent_topics": [
+        "student visa legal advice",
+        "personal fee calculations",
+        "class timetable allocation"
+      ],
+      "default_escalation_category": "contact_faculty_or_student_centre"
+    },
+    {
+      "topic_id": "academic_progression",
+      "display_name": "Academic progression",
+      "supported_intents": [
+        "academic progression review",
+        "intervention notices and plans",
+        "show cause and exclusion process",
+        "progression conditions after failed courses"
+      ],
+      "representative_terms": [
+        "academic progression",
+        "progression intervention",
+        "intervention notice",
+        "show cause",
+        "exclusion",
+        "excluded",
+        "failed courses",
+        "fail several courses",
+        "academic standing",
+        "progression notice",
+        "progression improvement plan"
+      ],
+      "common_paraphrases": [
+        "I failed too many subjects",
+        "the university says my progress is unsatisfactory",
+        "I have to explain why I should stay enrolled",
+        "what happens after a progression notice"
+      ],
+      "source_ids": ["uq-academic-progression-procedure"],
+      "unsupported_adjacent_topics": [
+        "migration or visa consequences of progression",
+        "faculty-specific progression plans",
+        "legal representation advice"
+      ],
+      "default_escalation_category": "contact_authorised_university_staff"
+    },
+    {
+      "topic_id": "course_removal_special_circumstances",
+      "display_name": "Removal of courses due to special circumstances",
+      "supported_intents": [
+        "course removal due to special circumstances",
+        "eligibility and evidence for retrospective removal",
+        "application timing and review",
+        "academic and financial consequences stated in the procedure"
+      ],
+      "representative_terms": [
+        "remove a course",
+        "course removal",
+        "withdraw",
+        "withdraw after census",
+        "withdrawal after census",
+        "withdrawing after census",
+        "late withdrawal",
+        "retrospective withdrawal",
+        "special circumstances",
+        "medical withdrawal",
+        "removed after census",
+        "removal of course",
+        "failing grade",
+        "fee liability",
+        "initial removal of course application",
+        "internal appeal"
+      ],
+      "common_paraphrases": [
+        "take a subject off my record after census",
+        "illness stopped me completing the course",
+        "withdraw from a past semester",
+        "remove failed courses because of medical circumstances"
+      ],
+      "source_ids": [
+        "uq-removal-courses-special-circumstances-procedure",
+        "uq-student-fees-policy"
+      ],
+      "unsupported_adjacent_topics": [
+        "international student visa consequences",
+        "routine withdrawal before census"
+      ],
+      "default_escalation_category": "contact_faculty_or_student_centre"
+    },
+    {
+      "topic_id": "fees_refunds",
+      "display_name": "Student fees and refunds",
+      "supported_intents": [
+        "fee liability and payment obligations",
+        "refund eligibility and applications",
+        "refund decision review",
+        "financial consequences of withdrawal timing"
+      ],
+      "representative_terms": [
+        "student fee",
+        "tuition fee",
+        "fee liability",
+        "refund",
+        "student refund",
+        "credit balance",
+        "census date refund",
+        "refund decision",
+        "refund review",
+        "financial liability",
+        "fees"
+      ],
+      "common_paraphrases": [
+        "can I get my course fees back",
+        "what happens to my fees if I withdraw",
+        "how do I request a refund",
+        "can I challenge a refund decision"
+      ],
+      "source_ids": [
+        "uq-student-fees-policy",
+        "uq-student-refunds-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "unsupported_adjacent_topics": [
+        "personal fee calculation",
+        "landlord dispute",
+        "dispute with my landlord",
+        "scholarship payment",
+        "overseas student health cover refund"
+      ],
+      "default_escalation_category": "contact_faculty_or_student_centre"
+    },
+    {
+      "topic_id": "academic_administrative_appeals",
+      "display_name": "Academic administrative appeals and grievances",
+      "supported_intents": [
+        "appealing an academic administrative decision",
+        "appeal grounds evidence and deadlines",
+        "internal review and grievance pathways",
+        "student support during an appeal or grievance"
+      ],
+      "representative_terms": [
+        "academic administrative appeal",
+        "administrative appeal",
+        "appeal decision",
+        "appeal deadline",
+        "appeal evidence",
+        "challenge an administrative decision",
+        "challenge the decision",
+        "internal appeal",
+        "student grievance",
+        "formal grievance",
+        "informal resolution",
+        "saaac"
+      ],
+      "common_paraphrases": [
+        "how can I challenge the university decision",
+        "what evidence do I need for an appeal",
+        "who reviews my academic appeal",
+        "how do I make a complaint about a decision"
+      ],
+      "source_ids": [
+        "uq-academic-administrative-appeals-policy",
+        "uq-academic-administrative-appeals-procedure",
+        "uq-student-grievance-resolution-procedure",
+        "uq-removal-courses-special-circumstances-procedure"
+      ],
+      "unsupported_adjacent_topics": [
+        "legal representation advice",
+        "external tribunal legal advice",
+        "appeals about library or parking fines"
+      ],
+      "default_escalation_category": "contact_authorised_university_staff"
+    },
+    {
+      "topic_id": "reasonable_adjustments",
+      "display_name": "Reasonable adjustments for students",
+      "supported_intents": [
+        "reasonable adjustment eligibility and process",
+        "assessment and examination adjustments",
+        "study load adjustments",
+        "supporting documentation for adjustments"
+      ],
+      "representative_terms": [
+        "reasonable adjustment",
+        "accessibility adjustment",
+        "disability adjustment",
+        "medical condition adjustment",
+        "exam adjustment",
+        "assessment adjustment",
+        "study load adjustment",
+        "accessibility and welfare",
+        "supporting documentation"
+      ],
+      "common_paraphrases": [
+        "can my assessment be adjusted for a medical condition",
+        "I need different exam arrangements",
+        "can my study load be reduced as an adjustment",
+        "what documents are needed for accessibility support"
+      ],
+      "source_ids": [
+        "uq-reasonable-adjustments-students-procedure",
+        "uq-assessment-procedure",
+        "uq-examinations-procedure"
+      ],
+      "unsupported_adjacent_topics": [
+        "medical diagnosis",
+        "guaranteed approval of an adjustment",
+        "course-specific inherent requirement decisions"
+      ],
+      "default_escalation_category": "contact_authorised_university_staff"
+    }
+  ],
+  "explicitly_unsupported": [
+    {
+      "category": "university_admin_but_out_of_corpus",
+      "phrases": [
+        "parking permit",
+        "parking fine",
+        "library fine",
+        "library borrowing fine",
+        "library loan",
+        "student accommodation",
+        "campus security",
+        "scholarship application",
+        "scholarship eligibility",
+        "merit scholarship",
+        "graduation ceremony",
+        "student id card",
+        "public transport concession",
+        "class timetable",
+        "health insurance",
+        "student id replacement",
+        "gym membership",
+        "password reset",
+        "uq account password",
+        "childcare waitlist",
+        "academic misconduct",
+        "exam misconduct",
+        "library study room",
+        "reserve a group study room",
+        "practice room",
+        "music practice room",
+        "instrument room"
+      ],
+      "escalation_category": "contact_faculty_or_student_centre"
+    },
+    {
+      "category": "out_of_domain",
+      "phrases": [
+        "weather forecast",
+        "restaurant recommendation",
+        "write computer code",
+        "buy a laptop",
+        "laptop should i buy",
+        "travel itinerary",
+        "medical diagnosis",
+        "legal representation"
+      ],
+      "escalation_category": "out_of_domain_no_university_escalation"
+    }
+  ],
+  "ambiguous_adjacent_scope": [
+    {
+      "phrases": [
+        "visa impact",
+        "visa consequences",
+        "visa expires",
+        "immigration advice",
+        "international student visa",
+        "student visa",
+        "will uq approve"
+      ],
+      "reason": "The policy may describe an administrative step, but the corpus cannot provide migration or legal advice.",
+      "escalation_category": "international_student_or_visa_support",
+      "always_ambiguous": true
+    },
+    {
+      "phrases": [
+        "my faculty said",
+        "course coordinator told me",
+        "school-specific rule",
+        "program-specific rule"
+      ],
+      "reason": "The central policy corpus may not contain the local faculty, school, program, or course rule.",
+      "escalation_category": "contact_faculty_or_student_centre",
+      "always_ambiguous": true
+    },
+    {
+      "phrases": [
+        "what should I do",
+        "am I eligible",
+        "will I be approved",
+        "guarantee my application"
+      ],
+      "reason": "The request may require case-specific facts or an authorised decision rather than policy retrieval alone.",
+      "escalation_category": "contact_authorised_university_staff",
+      "always_ambiguous": true
+    }
+  ]
+}

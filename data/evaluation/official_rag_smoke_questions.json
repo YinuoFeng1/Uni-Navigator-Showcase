@@ -1,0 +1,145 @@
+[
+  {
+    "question_id": "official_academic_progression_001",
+    "question": "What must a student do after receiving an academic progression intervention notice?",
+    "expected_source_ids": ["uq-academic-progression-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["academic progression", "progression intervention"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks intervention evidence from the current Academic Progression Procedure."
+  },
+  {
+    "question_id": "official_assessment_extensions_001",
+    "question": "What does the Assessment Procedure say about extensions to assessment due dates?",
+    "expected_source_ids": ["uq-assessment-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["extension", "assessment due date"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks extension and due-date evidence from the current Assessment Procedure."
+  },
+  {
+    "question_id": "official_enrolment_visa_001",
+    "question": "What are the study load requirements for an international student on a student visa?",
+    "expected_source_ids": ["uq-enrolment-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["international student", "student visa"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks international-student enrolment evidence and visa escalation."
+  },
+  {
+    "question_id": "official_examinations_illness_001",
+    "question": "What is a deferred examination and when can it be approved for medical reasons?",
+    "expected_source_ids": ["uq-examinations-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["deferred examination", "medical"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks the deferred-examination definition and medical escalation."
+  },
+  {
+    "question_id": "official_course_removal_001",
+    "question": "When can a course be removed after census date due to special circumstances without academic or financial penalty?",
+    "expected_source_ids": ["uq-removal-courses-special-circumstances-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["census date", "special circumstances", "financial liability"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks current course-removal criteria and high-stakes fee guidance."
+  },
+  {
+    "question_id": "official_assessment_policy_001",
+    "question": "What principles does the UQ Assessment Policy set for assessment practices?",
+    "expected_source_ids": ["uq-assessment-policy"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["assessment", "principles"],
+    "expected_escalation": false,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks the policy-level principles that complement the Assessment Procedure."
+  },
+  {
+    "question_id": "official_student_fees_001",
+    "question": "What does the UQ Student Fees Policy say about student fee liability after the census date?",
+    "expected_source_ids": ["uq-student-fees-policy"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["census date", "fee"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks general fee liability evidence from the Student Fees Policy."
+  },
+  {
+    "question_id": "official_student_refunds_001",
+    "question": "When is a student eligible for a refund before the census date under the UQ Student Refunds Procedure?",
+    "expected_source_ids": ["uq-student-refunds-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["refund", "census date"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks refund eligibility and census-date evidence."
+  },
+  {
+    "question_id": "official_appeals_policy_001",
+    "question": "What is the role of SAAAC under the Academic Administrative Appeals by Students Policy?",
+    "expected_source_ids": ["uq-academic-administrative-appeals-policy"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["SAAAC", "final internal avenue"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks the policy-level role of the final internal academic appeal body."
+  },
+  {
+    "question_id": "official_appeals_procedure_001",
+    "question": "What requirements apply before a student can appeal to SAAAC under the Academic Administrative Appeals by Students Procedure?",
+    "expected_source_ids": ["uq-academic-administrative-appeals-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["initial decision-maker", "appeal"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks the procedural prerequisites for a SAAAC appeal."
+  },
+  {
+    "question_id": "official_student_grievance_001",
+    "question": "How should a student first try to resolve a grievance under the Student Grievance Resolution Procedure?",
+    "expected_source_ids": ["uq-student-grievance-resolution-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["informal resolution", "grievance"],
+    "expected_escalation": false,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks the initial informal grievance pathway and available support."
+  },
+  {
+    "question_id": "official_reasonable_adjustments_001",
+    "question": "What kinds of reasonable adjustments may be considered for assessment, examinations, or study load?",
+    "expected_source_ids": ["uq-reasonable-adjustments-students-procedure"],
+    "expected_source_type": "official_policy",
+    "expected_keywords": ["reasonable adjustment", "study-load adjustments"],
+    "expected_escalation": true,
+    "expected_retrieval_status": "grounded",
+    "source_mode": "official",
+    "notes": "Checks adjustment types and the student support process."
+  },
+  {
+    "question_id": "official_out_of_corpus_001",
+    "question": "Xylophone practice room booking",
+    "expected_source_ids": [],
+    "expected_source_type": null,
+    "expected_keywords": [],
+    "expected_escalation": true,
+    "expected_retrieval_status": "insufficient_evidence",
+    "source_mode": "official",
+    "notes": "Out-of-corpus probe; the system must return no citations and recommend checking an authorised source."
+  }
+]
