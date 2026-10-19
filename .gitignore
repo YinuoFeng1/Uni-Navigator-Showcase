@@ -19,6 +19,7 @@ htmlcov/
 frontend/.env.local
 frontend/.next/
 frontend/.next-public/
+frontend/out/
 frontend/node_modules/
 frontend/tsconfig.tsbuildinfo
 frontend/next-env.d.ts

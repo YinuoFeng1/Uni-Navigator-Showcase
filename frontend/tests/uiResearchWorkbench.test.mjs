@@ -134,7 +134,9 @@ test("failed chat requests retain the question and expose retry", async () => {
     new URL("../components/chat/QuestionInput.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(chatSource, /setFailedRequest\(\{ question, sensitiveWarningShown \}\)/);
+  assert.match(chatSource, /setFailedRequest\(\{ question, sensitiveWarningShown, demoLimited:/);
+  assert.match(chatSource, /demo_rate_limit/);
+  assert.match(chatSource, /Your question is kept/);
   assert.match(chatSource, /failure\.retryable/);
   assert.match(chatSource, /retryFailedRequest/);
   assert.match(chatSource, />\s*Retry\s*</);

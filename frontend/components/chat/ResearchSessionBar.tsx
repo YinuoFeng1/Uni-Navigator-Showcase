@@ -14,9 +14,14 @@ export function ResearchSessionBar({ research, answering, onStarted }: {
   const [participant, setParticipant] = useState("");
   const [consent, setConsent] = useState(false);
   const active = research.session?.state === "active";
+  const cloudDemo = process.env.NEXT_PUBLIC_CLOUD_DEMO === "true";
   const inputClass = "mt-1 w-full rounded-md border border-[var(--border-light)] bg-white px-3 py-2 text-sm";
   return <section aria-label="Research session" className="mb-5 border-y border-[var(--border-light)] py-4">
-    {active ? <div className="flex flex-wrap items-center justify-between gap-3">
+    {cloudDemo ? <p className="text-sm text-[var(--text-secondary)]">
+      Public demonstration, not a research session. Questions are sent to OpenAI.
+      Demo activity is stored temporarily and may be lost when the server restarts.
+      Do not enter personal information. Usage limits apply.
+    </p> : active ? <div className="flex flex-wrap items-center justify-between gap-3">
       <div className="min-w-0 break-words text-sm">
         <strong>{research.session?.roundId} / {research.session?.participantLabel}</strong>
         <p className="text-[var(--text-secondary)]">{research.session?.executionContext === "participant_study" ? "Participant study" : "Development test"} · Active</p>

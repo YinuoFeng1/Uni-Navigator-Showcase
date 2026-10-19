@@ -23,6 +23,10 @@ export function useResearchSession() {
 
   async function restore() {
     setError("");
+    if (process.env.NEXT_PUBLIC_CLOUD_DEMO === "true") {
+      setReady(true);
+      return;
+    }
     try {
       const id = sessionStorage.getItem(sessionKey);
       const pendingStart = sessionStorage.getItem(startKey);

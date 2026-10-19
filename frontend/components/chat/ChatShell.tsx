@@ -30,6 +30,7 @@ import type {
 type FailedChatRequest = {
   question: string;
   sensitiveWarningShown: boolean;
+  demoLimited?: boolean;
 };
 type ChatEventInput = {
   interactionId?: string;
@@ -152,7 +153,7 @@ export function ChatShell() {
         current.filter((message) => message.id !== userMessage.id),
       );
       setSystemFailure(!failure.retryable);
-      setFailedRequest({ question, sensitiveWarningShown });
+      setFailedRequest({ question, sensitiveWarningShown, demoLimited: failure.failureCategory === "demo_rate_limit" });
       setFailureCorrelationId(failure.interactionId);
       if (!failure.systemFailureLogged) {
         emit({
@@ -272,7 +273,9 @@ export function ChatShell() {
 
         {failedRequest && !systemFailure ? (
           <InlineNotice title="Request failed" tone="danger" className="p-4">
-            <p>{CHAT_REQUEST_RETRY_MESSAGE}</p>
+            <p>{failedRequest.demoLimited
+              ? "The shared demo is busy or its usage allowance has been reached. Your question is kept. Please try again later."
+              : CHAT_REQUEST_RETRY_MESSAGE}</p>
             <Button
               type="button"
               variant="secondary"
