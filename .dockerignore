@@ -16,6 +16,7 @@
 !frontend/public/**
 !frontend/package.json
 !frontend/pnpm-lock.yaml
+!frontend/pnpm-workspace.yaml
 !frontend/next.config.ts
 !frontend/tsconfig.json
 !frontend/postcss.config.*

@@ -1,7 +1,7 @@
 FROM node:22-bookworm-slim AS frontend
 WORKDIR /build/frontend
 RUN npm install --global pnpm@11.2.2
-COPY frontend/package.json frontend/pnpm-lock.yaml ./
+COPY frontend/package.json frontend/pnpm-lock.yaml frontend/pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY frontend/ ./
 ENV NEXT_PUBLIC_API_BASE_URL="" NEXT_PUBLIC_CLOUD_DEMO=true NEXT_TELEMETRY_DISABLED=1
